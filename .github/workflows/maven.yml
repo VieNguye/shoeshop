@@ -35,8 +35,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - run: cp target/shoe-ShoppingCart-0.0.1-SNAPSHOT.jar /home/vagrant/projects/github-projects/shoeshop
-    - run: cd /home/vagrant/projects/github-projects/shoeshop
+    - run: cd /home/runner/work/shoeshop/shoeshop/target/
+    - run: ls -la
     - run: nohup java -jar shoe-ShoppingCart-0.0.1-SNAPSHOT.jar 2>&1 &
  
   
