@@ -20,6 +20,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    - name: 🛒 Checkout
+      uses: actions/checkout@v2
+    - name: 🔎 Check IP
+      run: curl https://api.ipify.org
     - uses: actions/checkout@v4
     - name: Set up JDK 17
       uses: actions/setup-java@v4
