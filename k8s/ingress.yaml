@@ -4,11 +4,16 @@ kind: Ingress
 metadata:
   name: shoeshop-ingress
   annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-prod 
     nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
   ingressClassName: nginx
+  tls:
+  - hosts:
+    - shoeshop.viennnguyen1301.com
+    secretName: shoeshop-tls
   rules:
-  - host: shoeshop.local
+  - host: shoeshop.viennnguyen1301.com
     http:
       paths:
       - path: /
