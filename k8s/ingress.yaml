@@ -4,6 +4,7 @@ kind: Ingress
 metadata:
   name: shoeshop-ingress
   annotations:
+    service.beta.kubernetes.io/azure-load-balancer-resource-group: viennguyen_rg
     cert-manager.io/cluster-issuer: letsencrypt-prod 
     nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
