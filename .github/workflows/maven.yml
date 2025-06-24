@@ -6,7 +6,7 @@
 # separate terms of service, privacy policy, and support
 # documentation.
 
-name: Shoe Shop CI/CD
+name: Shoeshop CI/CD
 
 on:
   push:
@@ -48,5 +48,5 @@ jobs:
     - name: Deploy to Kubernetes
       run: |
         kubectl apply -f k8s/
-        kuebctl get ingress
+        kubectl get ingress
  
