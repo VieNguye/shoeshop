@@ -23,6 +23,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    - name: Generate image tag
+      id: vars
+      run: echo "TAG=$(date +%Y%m%d.%H%M)" >> $GITHUB_ENV
+  
     - name: Checkout code
       uses: actions/checkout@v3
     
@@ -41,7 +45,9 @@ jobs:
         context: .
         file: Dockerfile
         push: true
-        tags: ${{ secrets.DOCKERHUB_USERNAME }}/backend-app:latest
+        tags: |
+          ${{ secrets.DOCKERHUB_USERNAME }}/backend-app:${{ env.TAG }}
+          ${{ secrets.DOCKERHUB_USERNAME }}/backend-app:latest
     
     - name: Setup Kubeconfig
       if: env.ENABLE_K8S_DEPLOY == 'true'
