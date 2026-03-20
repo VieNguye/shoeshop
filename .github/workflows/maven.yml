@@ -15,7 +15,7 @@ on:
     branches: [ "main" ]
 
 env:
-  ENABLE_K8S_DEPLOY: false   # flip to 'true' when you want to deploy
+  ENABLE_K8S_DEPLOY: true   # flip to 'true' when you want to deploy
   
 jobs:
   build:
@@ -41,7 +41,7 @@ jobs:
         context: .
         file: Dockerfile
         push: true
-        tags: ${{ secrets.DOCKERHUB_USERNAME }}/shoeshop:latest
+        tags: ${{ secrets.DOCKERHUB_USERNAME }}/backend-app:latest
     
     - name: Setup Kubeconfig
       if: env.ENABLE_K8S_DEPLOY == 'true'
@@ -53,5 +53,4 @@ jobs:
       if: env.ENABLE_K8S_DEPLOY == 'true'
       run: |
         kubectl apply -f k8s/
-        kubectl get ingress
  
